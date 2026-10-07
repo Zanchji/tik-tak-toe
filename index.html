@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 en Línea | vs CPU</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="game-container">
+        <header class="game-header">
+            <h1>3 en Línea</h1>
+            <p>Full Stack Edition: Humano vs IA</p>
+        </header>
+
+        <!-- Panel de Configuración -->
+        <section class="config-panel" aria-label="Configuración del juego">
+            <div class="config-group">
+                <label for="difficulty-select">Dificultad:</label>
+                <select id="difficulty-select" class="custom-select">
+                    <option value="easy">Fácil</option>
+                    <option value="medium">Medio</option>
+                    <option value="hard" selected>Imposible (Minimax)</option>
+                </select>
+            </div>
+
+            <div class="config-group">
+                <label>Tu Ficha:</label>
+                <div class="toggle-group" id="symbol-selector">
+                    <button type="button" class="btn-toggle active" data-symbol="X">X</button>
+                    <button type="button" class="btn-toggle" data-symbol="O">O</button>
+                </div>
+            </div>
+
+            <div class="config-group">
+                <label>Primer Turno:</label>
+                <div class="toggle-group" id="starter-selector">
+                    <button type="button" class="btn-toggle active" data-starter="player">Tú</button>
+                    <button type="button" class="btn-toggle" data-starter="cpu">CPU</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marcador de Puntuación -->
+        <section class="score-board" aria-label="Marcador">
+            <div class="score-card player-card">
+                <span class="score-label" id="player-score-label">Jugador (X)</span>
+                <span class="score-value" id="score-player">0</span>
+            </div>
+            <div class="score-card ties-card">
+                <span class="score-label">Empates</span>
+                <span class="score-value" id="score-ties">0</span>
+            </div>
+            <div class="score-card cpu-card">
+                <span class="score-label" id="cpu-score-label">CPU (O)</span>
+                <span class="score-value" id="score-cpu">0</span>
+            </div>
+        </section>
+
+        <!-- Estado actual del turno -->
+        <div class="status-banner" id="status-text">
+            ¡Tu turno! Haz clic en una casilla para jugar.
+        </div>
+
+        <!-- Tablero de Juego (3x3) -->
+        <main class="board-container">
+            <div class="board" id="board" role="grid">
+                <button type="button" class="cell" data-index="0" aria-label="Casilla 1"></button>
+                <button type="button" class="cell" data-index="1" aria-label="Casilla 2"></button>
+                <button type="button" class="cell" data-index="2" aria-label="Casilla 3"></button>
+                <button type="button" class="cell" data-index="3" aria-label="Casilla 4"></button>
+                <button type="button" class="cell" data-index="4" aria-label="Casilla 5"></button>
+                <button type="button" class="cell" data-index="5" aria-label="Casilla 6"></button>
+                <button type="button" class="cell" data-index="6" aria-label="Casilla 7"></button>
+                <button type="button" class="cell" data-index="7" aria-label="Casilla 8"></button>
+                <button type="button" class="cell" data-index="8" aria-label="Casilla 9"></button>
+            </div>
+        </main>
+
+        <!-- Botones de Control de la Partida -->
+        <footer class="controls-panel">
+            <button id="btn-create" class="btn btn-primary" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                Crear Partida
+            </button>
+            <button id="btn-restart" class="btn btn-secondary" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Reiniciar Tablero
+            </button>
+            <button id="btn-end" class="btn btn-danger" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                Terminar Partida
+            </button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
